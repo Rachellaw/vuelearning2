@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+<body>
+    <!-- localStorage和sessionStorage统称webStorage,
+     localStorage的清除不能靠关闭窗口，而是靠调用API或手动清除缓存
+     sessionStorage可以靠关闭窗口 -->
+
+    <h2>localStorage</h2>
+    <button onclick="saveData()">点我保存数据</button>
+    <button onclick="readData()">点我读取数据</button>
+    <button onclick="removeData()">点我移除数据</button>
+    <button onclick="clearData()">点我清空数据</button>
+
+    <script>
+        let p = {name:'张三',age:18,gender:'男'}
+
+        function saveData(){
+            localStorage.setItem('msg','hello')
+            localStorage.setItem('msg2',18)
+            localStorage.setItem('person',JSON.stringify(p))
+        }
+
+        // 读取数据，没有的数据返回null，
+        //  若result值也为空，JSON.parse(result)返回null
+        function readData(){
+            console.log(localStorage.getItem('msg'))
+            console.log(localStorage.getItem('msg2'))
+
+            const result = localStorage.getItem('person')
+            console.log(JSON.parse(result))
+        }
+
+        function removeData(){
+            localStorage.removeItem('msg')
+        }
+
+        function clearData(){
+            localStorage.clear()
+        }
+    </script>
+</body>
+</html>
